@@ -4,7 +4,6 @@ const postAdministrativo = (req, res) => {
   conexion().then(() => {
     const modelo = require('../../models/administrativos');
     const administrativo = new modelo({
-      _id: req.body._id,
       correo: req.body.correo,
       cuenta: req.body.cuenta,
       curp: req.body.curp,
@@ -26,7 +25,6 @@ const postAlumno = (req, res) => {
   conexion().then(() => {
     const modelo = require('../../models/alumnos');
     const alumno = new modelo({
-      _id: req.body._id,
       curp: req.body.curp,
       escuela: req.body.escuela,
       fechaInscripcion: req.body.fechaInscripcion,
@@ -46,7 +44,6 @@ const postDocente = (req, res) => {
   conexion().then(() => {
     const modelo = require('../../models/docentes');
     const docente = new modelo({
-      _id: req.body._id,
       cuenta: req.body.cuenta,
       curp: req.body.curp,
       escuela: req.body.escuela,
@@ -65,9 +62,9 @@ const postDocente = (req, res) => {
 
 const postEscuela = (req, res) => {
   conexion().then(() => {
+    console.log(req.body);
     const modelo = require('../../models/escuelas');
     const escuela = new modelo({
-      _id: req.body._id,
       ciudad: req.body.ciudad,
       clave: req.body.clave,
       direccion: req.body.direccion,
@@ -81,9 +78,8 @@ const postEscuela = (req, res) => {
 
 const postMantenimiento = (req, res) => {
   conexion().then(() => {
-    const modelo = require('../../models/mantenimientos');
+    const modelo = require('../../models/mantenimiento');
     const mantenimiento = new modelo({
-      _id: req.body._id,
       cuenta: req.body.cuenta,
       curp: req.body.curp,
       escuela: req.body.escuela,

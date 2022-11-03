@@ -1,4 +1,5 @@
 const conexion = require('../controllers/conexion');
+const { Types } = require('mongoose');
 
 const getAlumnos = (req, res) => {
   conexion().then(() => {
@@ -90,6 +91,64 @@ const getMantenimiento = (req, res) => {
   });
 };
 
+const getTutorados = (req, res) => {
+  console.log(req.params);
+  conexion().then(() => {
+    const tutor = require('../../models/docentes');
+    tutor
+      .aggregate()
+      .lookup({
+        from: 'alumnos',
+        localField: 'tutorados',
+        foreignField: '_id',
+        as: 'tutorados',
+      })
+      .match({ _id: Types.ObjectId(req.params.id) })
+      .project({ tutorados: 1, _id: 0 })
+      .then((tutor) => {
+        res.json(tutor);
+      });
+  });
+};
+
+const getDocentesEscuela = (req, res) => {
+  conexion().then(() => {
+    const escuelas = require('../../models/escuelas');
+    escuelas
+      .aggregate()
+      .lookup({
+        from: 'docentes',
+        localField: 'docentes',
+        foreignField: '_id',
+        as: 'docentes',
+      })
+      .match({ _id: Types.ObjectId(req.params.id) })
+      .project({ docentes: 1, _id: 0 })
+      .then((docentes) => {
+        res.json(docentes);
+      });
+  });
+};
+
+const getAdministrativosEscuela = (req, res) => {
+  conexion().then(() => {
+    const escuelas = require('../../models/escuelas');
+    escuelas
+      .aggregate()
+      .lookup({
+        from: 'administrativos',
+        localField: 'administrativos',
+        foreignField: '_id',
+        as: 'administrativos',
+      })
+      .match({ _id: Types.ObjectId(req.params.id) })
+      .project({ administrativos: 1, _id: 0 })
+      .then((administrativos) => {
+        res.json(administrativos);
+      });
+  });
+};
+
 module.exports = {
   getAlumnos,
   getAlumno,
@@ -101,4 +160,7 @@ module.exports = {
   getAdmistrativo,
   getMantenimientos,
   getMantenimiento,
+  getTutorados,
+  getDocentesEscuela,
+  getAdministrativosEscuela,
 };
