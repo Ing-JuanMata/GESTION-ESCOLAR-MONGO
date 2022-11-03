@@ -2,6 +2,7 @@ const { Schema, model } = require('mongoose');
 
 
 const schema = new Schema({
+  _id: Schema.Types.ObjectId,
   curp: String,
   escuela: Schema.Types.ObjectId,
   fechaInscripcion: Schema.Types.Date,

@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const schema = new Schema({
+  _id: Schema.Types.ObjectId,
   cuenta: String,
   curp: String,
   escuela: Schema.Types.ObjectId,
