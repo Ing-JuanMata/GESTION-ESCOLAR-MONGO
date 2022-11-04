@@ -14,7 +14,7 @@ const getAlumnos = (req, res) => {
         );
         redis.quit();
       });
-      res.json(alumnos);
+      res.header('Access-Control-Allow-Origin', '*').json(alumnos);
     });
   });
 };
@@ -30,7 +30,7 @@ const getAlumno = (req, res) => {
         );
         redis.quit();
       });
-      res.json(alumno);
+      res.header('Access-Control-Allow-Origin', '*').json(alumno);
     });
   });
 };
@@ -46,7 +46,7 @@ const getEscuelas = (req, res) => {
         );
         redis.quit();
       });
-      res.json(escuelas);
+      res.header('Access-Control-Allow-Origin', '*').json(escuelas);
     });
   });
 };
@@ -62,7 +62,7 @@ const getEscuela = (req, res) => {
         );
         redis.quit();
       });
-      res.json(escuela);
+      res.header('Access-Control-Allow-Origin', '*').json(escuela);
     });
   });
 };
@@ -78,7 +78,7 @@ const getDocentes = (req, res) => {
         );
         redis.quit();
       });
-      res.json(docentes);
+      res.header('Access-Control-Allow-Origin', '*').json(docentes);
     });
   });
 };
@@ -94,7 +94,7 @@ const getDocente = (req, res) => {
         );
         redis.quit();
       });
-      res.json(docente);
+      res.header('Access-Control-Allow-Origin', '*').json(docente);
     });
   });
 };
@@ -110,7 +110,7 @@ const getAdmistrativos = (req, res) => {
         );
         redis.quit();
       });
-      res.json(administrativos);
+      res.header('Access-Control-Allow-Origin', '*').json(administrativos);
     });
   });
 };
@@ -126,7 +126,7 @@ const getAdmistrativo = (req, res) => {
         );
         redis.quit();
       });
-      res.json(administrativo);
+      res.header('Access-Control-Allow-Origin', '*').json(administrativo);
     });
   });
 };
@@ -142,7 +142,7 @@ const getMantenimientos = (req, res) => {
         );
         redis.quit();
       });
-      res.json(mantenimiento);
+      res.header('Access-Control-Allow-Origin', '*').json(mantenimiento);
     });
   });
 };
@@ -158,7 +158,7 @@ const getMantenimiento = (req, res) => {
         );
         redis.quit();
       });
-      res.json(mantenimiento);
+      res.header('Access-Control-Allow-Origin', '*').json(mantenimiento);
     });
   });
 };
@@ -185,7 +185,7 @@ const getTutorados = (req, res) => {
           );
           redis.quit();
         });
-        res.json(tutor);
+        res.header('Access-Control-Allow-Origin', '*').json(tutor);
       });
   });
 };
@@ -211,7 +211,7 @@ const getDocentesEscuela = (req, res) => {
           );
           redis.quit();
         });
-        res.json(docentes);
+        res.header('Access-Control-Allow-Origin', '*').json(docentes);
       });
   });
 };
@@ -237,7 +237,7 @@ const getAdministrativosEscuela = (req, res) => {
           );
           redis.quit();
         });
-        res.json(administrativos);
+        res.header('Access-Control-Allow-Origin', '*').json(administrativos);
       });
   });
 };

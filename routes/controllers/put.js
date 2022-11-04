@@ -15,7 +15,7 @@ const updateAdministrativo = (req, res) => {
           );
           redis.quit();
         });
-        res.json(administrativo);
+        res.header('Access-Control-Allow-Origin', '*').json(administrativo);
       });
   });
 };
@@ -31,7 +31,7 @@ const updateAlumno = (req, res) => {
         );
         redis.quit();
       });
-      res.json(alumno);
+      res.header('Access-Control-Allow-Origin', '*').json(alumno);
     });
   });
 };
@@ -47,7 +47,7 @@ const updateDocente = (req, res) => {
         );
         redis.quit();
       });
-      res.json(docente);
+      res.header('Access-Control-Allow-Origin', '*').json(docente);
     });
   });
 };
@@ -63,7 +63,7 @@ const updateEscuela = (req, res) => {
         );
         redis.quit();
       });
-      res.json(escuela);
+      res.header('Access-Control-Allow-Origin', '*').json(escuela);
     });
   });
 };
@@ -79,7 +79,7 @@ const updateMantenimiento = (req, res) => {
         );
         redis.quit();
       });
-      res.json(mantenimiento);
+      res.header('Access-Control-Allow-Origin', '*').json(mantenimiento);
     });
   });
 };

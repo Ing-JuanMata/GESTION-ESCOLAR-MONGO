@@ -29,7 +29,7 @@ const postAdministrativo = (req, res) => {
           );
           redis.quit();
         });
-        res.json(administrativo);
+        res.header('Access-Control-Allow-Origin', '*').json(administrativo);
       })
       .catch((err) => {
         redis.connect().then(() => {
@@ -67,7 +67,7 @@ const postAlumno = (req, res) => {
           );
           redis.quit();
         });
-        res.json(alumno);
+        res.header('Access-Control-Allow-Origin', '*').json(alumno);
       })
       .catch((err) => {
         redis.connect().then(() => {
@@ -106,7 +106,7 @@ const postDocente = (req, res) => {
           );
           redis.quit();
         });
-        res.json(docente);
+        res.header('Access-Control-Allow-Origin', '*').json(docente);
       })
       .catch((err) => {
         redis.connect().then(() => {
@@ -141,7 +141,7 @@ const postEscuela = (req, res) => {
           );
           redis.quit();
         });
-        res.json(escuela);
+        res.header('Access-Control-Allow-Origin', '*').json(escuela);
       })
       .catch((err) => {
         redis.connect().then(() => {
@@ -178,7 +178,7 @@ const postMantenimiento = (req, res) => {
           );
           redis.quit();
         });
-        res.json(mantenimiento);
+        res.header('Access-Control-Allow-Origin', '*').json(mantenimiento);
       })
       .catch((err) => {
         redis.connect().then(() => {
