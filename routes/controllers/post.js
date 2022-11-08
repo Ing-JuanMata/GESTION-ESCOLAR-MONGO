@@ -24,7 +24,7 @@ const postAdministrativo = (req, res) => {
       .then((administrativo) => {
         redis.connect().then(() => {
           redis.set(
-            `ADMINISTRATIVOS:POST:${new Date().getTime().toString()}`,
+            `ADMINISTRATIVOS:POST:${new Date().toISOString()}`,
             `Registro de administrativo ${administrativo._id}`
           );
           redis.quit();
@@ -34,7 +34,7 @@ const postAdministrativo = (req, res) => {
       .catch((err) => {
         redis.connect().then(() => {
           redis.set(
-            `ADMINISTRATIVOS:POST:${new Date().getTime().toString()}`,
+            `ADMINISTRATIVOS:POST:${new Date().toISOString()}`,
             err.message
           );
           redis.quit();
@@ -62,7 +62,7 @@ const postAlumno = (req, res) => {
       .then((alumno) => {
         redis.connect().then(() => {
           redis.set(
-            `ALUMNOS:POST:${new Date().getTime().toString()}`,
+            `ALUMNOS:POST:${new Date().toISOString()}`,
             `Registro de alumno ${alumno._id}`
           );
           redis.quit();
@@ -72,7 +72,7 @@ const postAlumno = (req, res) => {
       .catch((err) => {
         redis.connect().then(() => {
           redis.set(
-            `ALUMNOS:POST:${new Date().getTime().toString()}`,
+            `ALUMNOS:POST:${new Date().toISOString()}`,
             err.message
           );
           redis.quit();
@@ -101,7 +101,7 @@ const postDocente = (req, res) => {
       .then((docente) => {
         redis.connect().then(() => {
           redis.set(
-            `DOCENTES:POST:${new Date().getTime().toString()}`,
+            `DOCENTES:POST:${new Date().toISOString()}`,
             `Registro de docente ${docente._id}`
           );
           redis.quit();
@@ -111,7 +111,7 @@ const postDocente = (req, res) => {
       .catch((err) => {
         redis.connect().then(() => {
           redis.set(
-            `DOCENTES:POST:${new Date().getTime().toString()}`,
+            `DOCENTES:POST:${new Date().toISOString()}`,
             err.message
           );
           redis.quit();
@@ -136,7 +136,7 @@ const postEscuela = (req, res) => {
       .then((escuela) => {
         redis.connect().then(() => {
           redis.set(
-            `ESCUELAS:POST:${new Date().getTime().toString()}`,
+            `ESCUELAS:POST:${new Date().toISOString()}`,
             `Registro de escuela ${escuela._id}`
           );
           redis.quit();
@@ -146,7 +146,7 @@ const postEscuela = (req, res) => {
       .catch((err) => {
         redis.connect().then(() => {
           redis.set(
-            `ESCUELAS:POST:${new Date().getTime().toString()}`,
+            `ESCUELAS:POST:${new Date().toISOString()}`,
             err.message
           );
           redis.quit();
@@ -173,7 +173,7 @@ const postMantenimiento = (req, res) => {
       .then((mantenimiento) => {
         redis.connect().then(() => {
           redis.set(
-            `MANTENIMIENTO:POST:${new Date().getTime().toString()}`,
+            `MANTENIMIENTO:POST:${new Date().toISOString()}`,
             `Registro de mantenimiento ${mantenimiento._id}`
           );
           redis.quit();
@@ -183,7 +183,7 @@ const postMantenimiento = (req, res) => {
       .catch((err) => {
         redis.connect().then(() => {
           redis.set(
-            `MANTENIMIENTO:POST:${new Date().getTime().toString()}`,
+            `MANTENIMIENTO:POST:${new Date().toISOString()}`,
             err.message
           );
           redis.quit();

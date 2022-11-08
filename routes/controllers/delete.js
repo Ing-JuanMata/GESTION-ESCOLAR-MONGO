@@ -8,7 +8,7 @@ const deleteAdministrativo = (req, res) => {
     modelo.deleteOne({ _id: req.params.id }).then((administrativo) => {
       redis.connect().then(() => {
         redis.set(
-          `ADMINISTRATIVOS:DELETE:${new Date().getTime().toString()}`,
+          `ADMINISTRATIVOS:DELETE:${new Date().toISOString()}`,
           `Eliminacion de administrativo ${JSON.stringify(administrativo)}`
         );
         redis.quit();
@@ -24,7 +24,7 @@ const deleteAlumno = (req, res) => {
     modelo.deleteOne({ _id: req.params.id }).then((alumno) => {
       redis.connect().then(() => {
         redis.set(
-          `ALUMNOS:DELETE:${new Date().getTime().toString()}`,
+          `ALUMNOS:DELETE:${new Date().toISOString()}`,
           `Eliminacion de alumno ${JSON.stringify(alumno)}`
         );
         redis.quit();
@@ -40,7 +40,7 @@ const deleteDocente = (req, res) => {
     modelo.deleteOne({ _id: req.params.id }).then((docente) => {
       redis.connect().then(() => {
         redis.set(
-          `DOCENTES:DELETE:${new Date().getTime().toString()}`,
+          `DOCENTES:DELETE:${new Date().toISOString()}`,
           `Eliminacion de docente ${JSON.stringify(docente)}`
         );
         redis.quit();
@@ -56,7 +56,7 @@ const deleteEscuela = (req, res) => {
     modelo.deleteOne({ _id: req.params.id }).then((escuela) => {
       redis.connect().then(() => {
         redis.set(
-          `ESCUELAS:DELETE:${new Date().getTime().toString()}`,
+          `ESCUELAS:DELETE:${new Date().toISOString()}`,
           `Eliminacion de escuela ${JSON.stringify(escuela)}`
         );
         redis.quit();
@@ -72,7 +72,7 @@ const deleteMantenimiento = (req, res) => {
     modelo.deleteOne({ _id: req.params.id }).then((mantenimiento) => {
       redis.connect().then(() => {
         redis.set(
-          `MANTENIMIENTOS:DELETE:${new Date().getTime().toString()}`,
+          `MANTENIMIENTOS:DELETE:${new Date().toISOString()}`,
           `Eliminacion de mantenimiento ${JSON.stringify(mantenimiento)}`
         );
         redis.quit();

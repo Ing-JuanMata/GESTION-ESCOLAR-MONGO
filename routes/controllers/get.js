@@ -9,7 +9,7 @@ const getAlumnos = (req, res) => {
     modelo.find().then((alumnos) => {
       redis.connect().then(() => {
         redis.set(
-          `ALUMNOS:GET:${new Date().getTime().toString()}`,
+          `ALUMNOS:GET:${new Date().toISOString()}`,
           'Consulta de alumnos'
         );
         redis.quit();
@@ -25,7 +25,7 @@ const getAlumno = (req, res) => {
     modelo.findById(req.params.id).then((alumno) => {
       redis.connect().then(() => {
         redis.set(
-          `ALUMNOS:GET:${new Date().getTime().toString()}`,
+          `ALUMNOS:GET:${new Date().toISOString()}`,
           `Consulta de alumno ${alumno._id}`
         );
         redis.quit();
@@ -41,7 +41,7 @@ const getEscuelas = (req, res) => {
     modelo.find().then((escuelas) => {
       redis.connect().then(() => {
         redis.set(
-          `ESCUELAS:GET:${new Date().getTime().toString()}`,
+          `ESCUELAS:GET:${new Date().toISOString()}`,
           'Consulta de escuelas'
         );
         redis.quit();
@@ -57,7 +57,7 @@ const getEscuela = (req, res) => {
     modelo.findById(req.params.id).then((escuela) => {
       redis.connect().then(() => {
         redis.set(
-          `ESCUELAS:GET:${new Date().getTime().toString()}`,
+          `ESCUELAS:GET:${new Date().toISOString()}`,
           `Consulta de escuela ${escuela._id}`
         );
         redis.quit();
@@ -73,7 +73,7 @@ const getDocentes = (req, res) => {
     modelo.find().then((docentes) => {
       redis.connect().then(() => {
         redis.set(
-          `DOCENTES:GET:${new Date().getTime().toString()}`,
+          `DOCENTES:GET:${new Date().toISOString()}`,
           'Consulta de docentes'
         );
         redis.quit();
@@ -89,7 +89,7 @@ const getDocente = (req, res) => {
     modelo.findById(req.params.id).then((docente) => {
       redis.connect().then(() => {
         redis.set(
-          `DOCENTES:GET:${new Date().getTime().toString()}`,
+          `DOCENTES:GET:${new Date().toISOString()}`,
           `Consulta de docente ${docente._id}`
         );
         redis.quit();
@@ -105,7 +105,7 @@ const getAdmistrativos = (req, res) => {
     modelo.find().then((administrativos) => {
       redis.connect().then(() => {
         redis.set(
-          `ADMINISTRATIVOS:GET:${new Date().getTime().toString()}`,
+          `ADMINISTRATIVOS:GET:${new Date().toISOString()}`,
           'Consulta de administrativos'
         );
         redis.quit();
@@ -121,7 +121,7 @@ const getAdmistrativo = (req, res) => {
     modelo.findById(req.params.id).then((administrativo) => {
       redis.connect().then(() => {
         redis.set(
-          `ADMINISTRATIVOS:GET:${new Date().getTime().toString()}`,
+          `ADMINISTRATIVOS:GET:${new Date().toISOString()}`,
           `Consulta de administrativo ${administrativo._id}`
         );
         redis.quit();
@@ -137,7 +137,7 @@ const getMantenimientos = (req, res) => {
     modelo.find().then((mantenimiento) => {
       redis.connect().then(() => {
         redis.set(
-          `MANTENIMIENTOS:GET:${new Date().getTime().toString()}`,
+          `MANTENIMIENTOS:GET:${new Date().toISOString()}`,
           'Consulta de mantenimientos'
         );
         redis.quit();
@@ -153,7 +153,7 @@ const getMantenimiento = (req, res) => {
     modelo.findById(req.params.id).then((mantenimiento) => {
       redis.connect().then(() => {
         redis.set(
-          `MANTENIMIENTOS:GET:${new Date().getTime().toString()}`,
+          `MANTENIMIENTOS:GET:${new Date().toISOString()}`,
           `Consulta de mantenimiento ${mantenimiento._id}`
         );
         redis.quit();
@@ -180,7 +180,7 @@ const getTutorados = (req, res) => {
       .then((tutor) => {
         redis.connect().then(() => {
           redis.set(
-            `DOCENTES:GET:${new Date().getTime().toString()}`,
+            `DOCENTES:GET:${new Date().toISOString()}`,
             `Consulta de tutorados de ${req.params.id}`
           );
           redis.quit();
@@ -206,7 +206,7 @@ const getDocentesEscuela = (req, res) => {
       .then((docentes) => {
         redis.connect().then(() => {
           redis.set(
-            `ESCUELAS:GET:${new Date().getTime().toString()}`,
+            `ESCUELAS:GET:${new Date().toISOString()}`,
             `Consulta de docentes de ${req.params.id}`
           );
           redis.quit();
@@ -232,7 +232,7 @@ const getAdministrativosEscuela = (req, res) => {
       .then((administrativos) => {
         redis.connect().then(() => {
           redis.set(
-            `ESCUELAS:GET:${new Date().getTime().toString()}`,
+            `ESCUELAS:GET:${new Date().toISOString()}`,
             `Consulta de administrativos de ${req.params.id}`
           );
           redis.quit();
