@@ -567,6 +567,7 @@
   "nombre": "string",
   "numeroOficina": "number",
   "tutoriasFirmadas": "boolean",
+  "tutorados": "Arreglo de numeros o cadenas alfanumericas de 24 caracteres"
   "telefono": "string"
 }
 ```
@@ -615,16 +616,16 @@
 
 ```json
 {
-    "cuenta": "1111222233334444",
-    "curp": "CA001",
-    "escuela": "63633e8d82e001194bb4d75f",
-    "especialidad": "Bases de datos",
-    "grado": "Maestria",
-    "nombre": "Jauregui",
-    "numeroOficina": 1,
-    "telefono": "3110234894",
-    "tutorados":["636343b50b3599e5850100c4"],
-    "tutoriasFirmadas": false
+  "cuenta": "1111222233334444",
+  "curp": "CA001",
+  "escuela": "63633e8d82e001194bb4d75f",
+  "especialidad": "Bases de datos",
+  "grado": "Maestria",
+  "nombre": "Jauregui",
+  "numeroOficina": 1,
+  "telefono": "3110234894",
+  "tutorados": ["636343b50b3599e5850100c4"],
+  "tutoriasFirmadas": false
 }
 ```
 
@@ -657,18 +658,361 @@
 
 ### GET
 
+- **CONSULTA DE TODOS LAS ESCUELAS**
+
+**RUTA** `localhost:3000/escuelas`
+
+**RESPUESTA**
+
+```json
+[
+  {
+    "_id": "6352b18a44362eb42b2cf37a",
+    "clave": "1",
+    "nombre": "Instituto Tecnologico de Tepic",
+    "direccion": "Lagos del country",
+    "ciudad": "Tepic",
+    "docentes": ["6352ba6b44362eb42b2cf37d", "6352ba6b44362eb42b2cf37e"],
+    "administrativos": ["6354638f44362eb42b2cf389", "6354638f44362eb42b2cf38a"],
+    "mantenimiento": ["6354656544362eb42b2cf38f", "6354656544362eb42b2cf390"],
+    "alumnos": ["6354613b44362eb42b2cf383", "6354613b44362eb42b2cf384"]
+  },
+  {
+    "_id": "6352b18a44362eb42b2cf37b",
+    "clave": "2",
+    "nombre": "Universidad Tecnologica",
+    "direccion": "Boulevard Tepic, Xalisco",
+    "ciudad": "Xalisco",
+    "docentes": ["6352ba6b44362eb42b2cf37f", "6352ba6b44362eb42b2cf380"],
+    "administrativos": ["6354638f44362eb42b2cf38b", "6354638f44362eb42b2cf38c"],
+    "mantenimiento": ["6354656544362eb42b2cf391", "6354656544362eb42b2cf392"],
+    "alumnos": ["6354613b44362eb42b2cf385", "6354613b44362eb42b2cf386"]
+  },
+  {
+    "_id": "6352b18a44362eb42b2cf37c",
+    "clave": "3",
+    "nombre": "Universidad Vizcaya",
+    "direccion": "P. Sanchez",
+    "ciudad": "Tepic",
+    "docentes": ["6352ba6b44362eb42b2cf381", "6352ba6b44362eb42b2cf382"],
+    "administrativos": [
+      "6354638f44362eb42b2cf38d",
+      "6354638f44362eb42b2cf38e",
+      "000000000000000000000001"
+    ],
+    "mantenimiento": ["6354656544362eb42b2cf393", "6354656544362eb42b2cf394"],
+    "alumnos": ["6354613b44362eb42b2cf387", "6354613b44362eb42b2cf388"]
+  }
+]
+```
+
+- **CONSULTA DE UNA ESCUELA**
+
+**RUTA** `localhost:3000/escuelas/:id`
+
+**EJEMPLO** `localhost:3000/escuelas/6352b18a44362eb42b2cf37a`
+
+```json
+{
+  "_id": "6352b18a44362eb42b2cf37a",
+  "clave": "1",
+  "nombre": "Instituto Tecnologico de Tepic",
+  "direccion": "Lagos del country",
+  "ciudad": "Tepic",
+  "docentes": ["6352ba6b44362eb42b2cf37d", "6352ba6b44362eb42b2cf37e"],
+  "administrativos": ["6354638f44362eb42b2cf389", "6354638f44362eb42b2cf38a"],
+  "mantenimiento": ["6354656544362eb42b2cf38f", "6354656544362eb42b2cf390"],
+  "alumnos": ["6354613b44362eb42b2cf383", "6354613b44362eb42b2cf384"]
+}
+```
+
 ### POST
+
+- **RUTA DE POST** `localhost:3000/escuela`
+- **MODELO REQUERIDO PARA LOS DATOS**
+
+```json
+{
+  "_id": "Numero o cadena alfanumerica de 24 caracteres",
+  "ciudad": "Tepic",
+  "clave": "1",
+  "direccion": "Insurgentes #12",
+  "nombre": "PreparaTec",
+  "docentes": "Arreglo de numeros o cadenas alfanumericas de 24 caracteres",
+  "administrativos": "Arreglo de numeros o cadenas alfanumericas de 24 caracteres",
+  "mantenimiento": "Arreglo de numeros o cadenas alfanumericas de 24 caracteres",
+  "alumnos": "Arreglo de numeros o cadenas alfanumericas de 24 caracteres"
+}
+```
+
+- **EJEMPLO**
+
+```json
+{
+  "_id": "000000000000000000000001",
+  "ciudad": "Tepic",
+  "clave": "1",
+  "direccion": "Insurgentes #12",
+  "nombre": "PreparaTec"
+}
+```
+
+- **RESPUESTA**
+
+```json
+{
+  "_id": "000000000000000000000001",
+  "administrativos": [],
+  "alumnos": [],
+  "ciudad": "Tepic",
+  "clave": "1",
+  "direccion": "Insurgentes #12",
+  "docentes": [],
+  "mantenimiento": [],
+  "nombre": "PreparaTec",
+  "__v": 0
+}
+```
 
 ### PUT
 
+- **RUTA DE PUT** `localhost:3000/escuela/:id`
+- **EL MODELO ES EL MISMO QUE EL DEL METODO DE POST**
+- **EJEMPLO** `localhost:3000/escuela/000000000000000000000001`
+
+```json
+{
+  "ciudad": "Tepic",
+  "clave": "1",
+  "direccion": "Insurgentes #12",
+  "nombre": "PreparaTec",
+  "administrativos": ["636340cbb1827b423bd394a1"],
+  "alumnos": ["636343b50b3599e5850100c4"],
+  "docentes": ["636341f268f446ebd8746326"],
+  "mantenimiento": ["63633fd4b1827b423bd3949f"]
+}
+```
+
+- **RESPUESTA**
+
+```json
+{
+  "acknowledged": true,
+  "modifiedCount": 1,
+  "upsertedId": null,
+  "upsertedCount": 0,
+  "matchedCount": 1
+}
+```
+
 ### DELETE
+
+- **RUTA DE DELETE** `localhost:3000/escuela/:id`
+- **EJEMPLO** `localhost:3000/escuela/000000000000000000000001`
+- **RESPUESTA**
+
+```json
+{
+  "acknowledged": true,
+  "deletedCount": 1
+}
+```
 
 ## MANTENIMIENTO
 
 ### GET
 
+- **CONSULTA DE TODO EL PERSONAL DE MANTENIMIENTO**
+
+**RUTA** `localhost:3000/mantenimientos`
+
+**RESPUESTA**
+
+```json
+[
+  {
+    "_id": "6354656544362eb42b2cf38f",
+    "curp": "7",
+    "nombre": "Jose",
+    "telefono": "123",
+    "cuenta": "66778899",
+    "telefonoInstitucional": "1234567890",
+    "especialidad": "Electrica",
+    "escuela": "6352b18a44362eb42b2cf37a"
+  },
+  {
+    "_id": "6354656544362eb42b2cf390",
+    "curp": "8",
+    "nombre": "Enrique",
+    "telefono": "456",
+    "cuenta": "99887766",
+    "telefonoInstitucional": "0987654321",
+    "especialidad": "Carpinteria",
+    "escuela": "6352b18a44362eb42b2cf37a"
+  },
+  {
+    "_id": "6354656544362eb42b2cf391",
+    "curp": "9",
+    "nombre": "Luis",
+    "telefono": "123",
+    "cuenta": "111222333",
+    "telefonoInstitucional": "1234567890",
+    "especialidad": "Electrica",
+    "escuela": "6352b18a44362eb42b2cf37b"
+  },
+  {
+    "_id": "6354656544362eb42b2cf392",
+    "curp": "10",
+    "nombre": "Lazaro",
+    "telefono": "456",
+    "cuenta": "444555666",
+    "telefonoInstitucional": "0987654321",
+    "especialidad": "Carpinteria",
+    "escuela": "6352b18a44362eb42b2cf37b"
+  },
+  {
+    "_id": "6354656544362eb42b2cf393",
+    "curp": "11",
+    "nombre": "Tanya",
+    "telefono": "123",
+    "cuenta": "321654987",
+    "telefonoInstitucional": "1234567890",
+    "especialidad": "Electrica",
+    "escuela": "6352b18a44362eb42b2cf37c"
+  },
+  {
+    "_id": "6354656544362eb42b2cf394",
+    "curp": "12",
+    "nombre": "Antonio",
+    "telefono": "456",
+    "cuenta": "369258147",
+    "telefonoInstitucional": "0987654321",
+    "especialidad": "Carpinteria",
+    "escuela": "6352b18a44362eb42b2cf37c"
+  }
+]
+```
+
+- **CONSULTA DE UN MANTENIMIENTO**
+
+**RUTA** `localhost:3000/mantenimiento/:id`
+
+**EJEMPLO** `localhost:3000/mantenimiento/6354656544362eb42b2cf38f`
+
+```json
+{
+  "_id": "6354656544362eb42b2cf38f",
+  "curp": "7",
+  "nombre": "Jose",
+  "telefono": "123",
+  "cuenta": "66778899",
+  "telefonoInstitucional": "1234567890",
+  "especialidad": "Electrica",
+  "escuela": "6352b18a44362eb42b2cf37a"
+}
+```
+
 ### POST
+
+- **RUTA DE POST** `localhost:3000/mantenimiento`
+- **MODELO REQUERIDO PARA LOS DATOS**
+
+```json
+{
+  "_id": "Numero o cadena alfanumerica de 24 caracteres",
+  "ciudad": "Tepic",
+  "clave": "1",
+  "direccion": "Insurgentes #12",
+  "nombre": "PreparaTec",
+  "docentes": "Arreglo de numeros o cadenas alfanumericas de 24 caracteres",
+  "administrativos": "Arreglo de numeros o cadenas alfanumericas de 24 caracteres",
+  "mantenimiento": "Arreglo de numeros o cadenas alfanumericas de 24 caracteres",
+  "alumnos": "Arreglo de numeros o cadenas alfanumericas de 24 caracteres"
+}
+
+{
+    "_id":"Numero o cadena alfanumerica de 24 caracteres",
+    "cuenta": "string",
+    "curp": "string",
+    "escuela": "Numero o cadena alfanumerica de 24 caracteres",
+    "especialidad": "string",
+    "nombre": "string",
+    "telefono": "string",
+    "telefonoInstitucional": "string"
+}
+```
+
+- **EJEMPLO**
+
+```json
+{
+  "_id": "000000000000000000000001",
+  "cuenta": "6679667966796679",
+  "curp": "C10",
+  "escuela": "63633e8d82e001194bb4d75f",
+  "especialidad": "Electricista",
+  "nombre": "Jaime",
+  "telefono": "3112114567",
+  "telefonoInstitucional": "3500"
+}
+```
+
+- **RESPUESTA**
+
+```json
+{
+  "_id": "000000000000000000000001",
+  "cuenta": "6679667966796679",
+  "curp": "C10",
+  "escuela": "63633e8d82e001194bb4d75f",
+  "especialidad": "Electricista",
+  "nombre": "Jaime",
+  "telefono": "3112114567",
+  "telefonoInstitucional": "3500",
+  "__v": 0
+}
+```
 
 ### PUT
 
+- **RUTA DE PUT** `localhost:3000/mantenimiento/:id`
+- **EL MODELO ES EL MISMO QUE EL DEL METODO DE POST**
+- **EJEMPLO** `localhost:3000/mantenimiento/000000000000000000000001`
+
+```json
+{
+  "ciudad": "Tepic",
+  "clave": "1",
+  "direccion": "Insurgentes #12",
+  "nombre": "PreparaTec",
+  "administrativos": ["636340cbb1827b423bd394a1"],
+  "alumnos": ["636343b50b3599e5850100c4"],
+  "docentes": ["636341f268f446ebd8746326"],
+  "mantenimiento": ["63633fd4b1827b423bd3949f"]
+}
+```
+
+- **RESPUESTA**
+
+```json
+{
+  "acknowledged": true,
+  "modifiedCount": 1,
+  "upsertedId": null,
+  "upsertedCount": 0,
+  "matchedCount": 1
+}
+```
+
 ### DELETE
+
+- **RUTA DE DELETE** `localhost:3000/mantenimiento/:id`
+- **EJEMPLO** `localhost:3000/mantenimiento/000000000000000000000001`
+- **RESPUESTA**
+
+```json
+{
+  "acknowledged": true,
+  "deletedCount": 1
+}
+```
