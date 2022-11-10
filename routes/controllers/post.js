@@ -39,6 +39,7 @@ const postAdministrativo = (req, res) => {
           );
           redis.quit();
         });
+        res.json(err);
       });
   });
 };
@@ -71,10 +72,7 @@ const postAlumno = (req, res) => {
       })
       .catch((err) => {
         redis.connect().then(() => {
-          redis.set(
-            `ALUMNOS:POST:${new Date().toISOString()}`,
-            err.message
-          );
+          redis.set(`ALUMNOS:POST:${new Date().toISOString()}`, err.message);
           redis.quit();
         });
       });
@@ -110,10 +108,7 @@ const postDocente = (req, res) => {
       })
       .catch((err) => {
         redis.connect().then(() => {
-          redis.set(
-            `DOCENTES:POST:${new Date().toISOString()}`,
-            err.message
-          );
+          redis.set(`DOCENTES:POST:${new Date().toISOString()}`, err.message);
           redis.quit();
         });
       });
@@ -145,10 +140,7 @@ const postEscuela = (req, res) => {
       })
       .catch((err) => {
         redis.connect().then(() => {
-          redis.set(
-            `ESCUELAS:POST:${new Date().toISOString()}`,
-            err.message
-          );
+          redis.set(`ESCUELAS:POST:${new Date().toISOString()}`, err.message);
           redis.quit();
         });
       });
